@@ -2485,35 +2485,3 @@ local AimbotLoop; AimbotLoop = RunService[UISettings.RenderingMode]:Connect(func
         end
     end
 end)
---! Mobile UI Toggle Button (เวอร์ชันสวย)
-local UserInputService = game:GetService("UserInputService")
-local Players = game:GetService("Players")
-local TweenService = game:GetService("TweenService")
-
-if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled then
-    local playerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "MobileUIController"
-    screenGui.Parent = playerGui
-
-    -- สร้างปุ่ม
-    local toggleButton = Instance.new("TextButton")
-    toggleButton.Size = UDim2.new(0, 140, 0, 50)
-    toggleButton.Position = UDim2.new(0, 10, 0.5, -25) -- ซ้ายมือ กลางจอ
-    toggleButton.Text = "Toggle UI"
-    toggleButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    toggleButton.TextColor3 = Color3.new(1, 1, 1)
-    toggleButton.Font = Enum.Font.GothamBold
-    toggleButton.TextSize = 18
-    toggleButton.AutoButtonColor = false -- ปิด default สีตอนกด
-    toggleButton.Parent = screenGui
-
-    -- ทำให้ปุ่มมุมโค้งมน
-    local corner = Instance.new("UICorner")
-    corner.CornerRadius = UDim.new(0, 12) -- มุมโค้ง 12px
-    corner.Parent = toggleButton
-
-    -- ใส่เงา
-    local shadow = Instance.new("UIStroke")
-    shadow.Thickness = 1.5
-    shadow.Color = Color3.fromRGB(0, 0,
