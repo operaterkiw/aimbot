@@ -2485,3 +2485,37 @@ local AimbotLoop; AimbotLoop = RunService[UISettings.RenderingMode]:Connect(func
         end
     end
 end)
+--ปุ่ม
+local TweenService = game:GetService("TweenService")
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "FluentToggleGui"
+ScreenGui.Parent = game:GetService("CoreGui")
+
+local ToggleButton = Instance.new("TextButton")
+ToggleButton.Size = UDim2.new(0, 120, 0, 40)
+ToggleButton.Position = UDim2.new(0, 10, 0, 10)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ToggleButton.Text = "เปิด/ปิด"
+ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleButton.Font = Enum.Font.Gotham
+ToggleButton.TextSize = 14
+ToggleButton.Parent = ScreenGui
+ToggleButton.BorderSizePixel = 0
+ToggleButton.BackgroundTransparency = 0.2
+ToggleButton.AutoButtonColor = true
+ToggleButton.ZIndex = 9999999
+
+local menuOpened = true
+
+local function toggleMenu(open)
+    local goal = {BackgroundColor3 = open and Color3.fromRGB(30, 30, 30) or Color3.fromRGB(60, 60, 60)}
+    local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local tween = TweenService:Create(ToggleButton, tweenInfo, goal)
+    tween:Play()
+    Window:Minimize(not open)
+end
+
+ToggleButton.MouseButton1Click:Connect(function()
+    menuOpened = not menuOpened
+    toggleMenu(menuOpened)
+end)
